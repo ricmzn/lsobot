@@ -710,7 +710,7 @@ for ($i = 1; $i -le $timeTarget; $i++) {
 
     #If the difference between the system time and log event time is greater than the time target, stop. 
 
-    if ($diff -gt $scanInterval) {
+    if ($diff -eq $null -or $diff -gt $scanInterval) {
 
         Write-Output "$(Get-Timestamp) $warn $lcTime Landing detected at $logTime is too old. Excepted interval was $scanInterval. Discarding." | Out-file $debugLog -append
             # Do Nothing
